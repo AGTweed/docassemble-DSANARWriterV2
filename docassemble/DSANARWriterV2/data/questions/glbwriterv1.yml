@@ -1,0 +1,758 @@
+---
+metadata:
+  title: |
+    DSA Recommendations 
+  short title: |
+    DSA Global
+  description: |
+    DSA Global Recommendations generator (BETA)
+  authors:
+    - name: Adam
+      organization: AbiltyNet
+  revision_date: 2020-08-06
+  required privileges:
+   - admin
+   - developer
+   - advocate
+   - assessor
+---
+initial: true
+code: |
+  if not user_logged_in():
+    kick_out_user
+---
+event: kick_out_user
+question: |
+  I am sorry, but you need to log in if you want to use this.
+buttons:
+  - Log in: signin
+  - Exit: exit
+---
+mandatory: True
+question: |
+  General details
+fields:
+  - "Condition": gbl_cond
+    input type: dropdown
+    choices:
+      - SpLD: glo_SpLD
+      - Mental Health: glo_MH
+      - ASC: glo_ASC
+  - "Course Length (Years)": cor_len
+    datatype: range
+    min: 1
+    max: 7
+    default: 3
+---
+mandatory: True
+question: |
+  B-2-1: Reading and Research
+fields:
+  - "Text-to-speech": B21_tts
+    datatype: yesno
+    help: |
+      * ClaroRead Standard - Majority of support required - DOES NOT support convert to PDF
+      * ClaroRead Plus UK Version - as standard, but include convert to PDF
+      * ClaroRead Pro - majority of functionality required including advanced PDF options
+      * ClaroRead SE - limited funtionality (exam use)
+      * All versions (except SE) includeScreenRuler, ClaroCapture, ClaroView, ClaroRead Chrome Extension, ClaroIdeas, Claro AudioNote, Claro Voices, Batch Audio Converter, Save to Video, Speaking Calculator
+      * Mac version (other than SE) includes ScreenRuler, ClaroSpeak, ClaroCapture and ClaroView
+      * TextHelp Read & Write
+  - "Select": B21_tts_type
+    show if: B21_tts
+    required: False
+    choices:
+      - ClaroRead Standard
+      - ClaroRead Plus UK Version
+      - ClaroRead Pro
+      - ClaroRead SE
+      - TextHelp Read & Write
+  - "Speech-to-text": B21_stt
+    datatype: yesno
+    help: |
+        * Currently if chosing 'No Bundled headset' option, you will need to remove this as a type in the report
+  - "Select:": B21_stthd_type
+    show if: B21_stt
+    required: False
+    choices:
+      - Dragon with Andrea NC181: Andrea NC181
+      - Dragon with Plantronics DSP 400: Plantronics DSP 400
+      - Dragon with Wireless Headset: Dragon approved wireless headset
+      - Dragon without bundled headset: No bundled headset
+  - "Headset (if not STT bundle)": B21_hdst
+    datatype: yesno
+    help: |
+        * NC = Noise cancelling
+        * ANR = Active Noise Reduction - better for audio sensitivity
+        * Monaural = one ear
+        * Binaural = both ears
+  - "Select:": B21_hdst_type
+    show if: B21_hdst
+    required: False
+    choices:
+      - Andrea NC181 USB Monaural
+      - Andrea NC185 USB Binaural
+      - Andrea WNC-2100 Wireless NC Monaural
+      - Andrea WNC-2500 Wireless NC Binaural
+      - Plantronics DSP400 USB Binaural foldable
+      - ANR-950 - Wireless ANR Binaural
+  - "Mind mapping": B21_mm
+    datatype: yesno
+  - "Select:": B21_mm_type
+    show if: B21_mm
+    required: False
+    choices:
+      - MindView AT Suite
+      - Inspiration
+      - Mindjet MindManager
+      - MindGenius
+  - "Pro Study": B21_prost
+    datatype: yesno
+  - "Spellcheck add-on": B21_wbnk
+    datatype: yesno
+    help: |
+        * Medincle
+        * Spellementary
+        * Spellex
+  - "Medincle": B21_medinc
+    datatype: yesno
+    show if: B21_wbnk
+    help: |
+        * Medincle Spellchecker - dictionary add-in
+        * Medincle Plus - dictation and dictionary add-in
+        * Medincle AT Complete - add in for dictionary, dictation and word prediction
+  - "Select:": B21_wbnk_type
+    show if: B21_medinc
+    required: False
+    choices:
+      - Medincle Spellchecker
+      - Medincle Plus
+      - Medincle AT complete - Eco edition
+      - Medincle AT complete - Medical edition
+      - Medincle AT complete - Legal edition (medical and legal)
+  - "Spellex": B21_spellex
+    datatype: yesno
+    show if: B21_wbnk
+    help: |
+        * Spellex varied options - Gold appears to be only dictation version
+  - "Select:": B21_wbnk_type
+    show if: B21_spellex
+    required: False
+    choices:
+      - Spellex Dictation Gold - BioScientific
+      - Spellex Dictation Gold - Comprehensive English
+      - Spellex Dictation Gold - Geographical
+      - Spellex Dictation Gold - Legal
+      - Spellex Dictation Gold - Medical
+      - Spellex Dictation Gold - Veterinary
+      - Spellex Dictation BioScientific
+      - Spellex Dictation Legal
+      - Spellex Dictation Medical
+      - Spellex Dictation Veterinary
+      - Spellex BioScientific for Office
+      - Spellex Dental for Office
+      - Spellex Geographical for Office
+      - Spellex Veterinary for Office
+      - Spellex -OTHER- 
+  - "Spellementary": B21_spelle
+    datatype: yesno
+    show if: B21_wbnk
+    help: |
+        * Spellementary Elite - All features (currently only listing on AT Quote)
+        * Spellementary Standard - word searching, pronunciation, definitions and customisable dictionaries
+        * Spellementary Medical/Legal - as above, plus enhanced dictionary for the relevant subject
+        * Spellementary Medical/Legal Advanced - as above, plus exportable terms to MS Word spellchecker
+        * Spellementary Medical/Legal Professional - as above, plus export terms to voice recognition software    
+  - "Select:": B21_wbnk_type
+    show if: B21_spelle
+    required: False
+    choices:
+      - Spellementary Elite
+      - Spellementary Standard
+      - Spellementary Medical/Legal
+      - Spellementary Medical/Legal Advanced
+      - Spellementary Medical/Legal Professional
+  - "Screen tinting/ruler": B21_scrru
+    datatype: yesno
+    help: |
+      * Claro Screenruler suite will run independently, Immersive reader is available in Office and Edge browser
+  - "Select:": B21_scrru_type
+    show if: B21_scrru
+    required: False
+    choices:
+      - Claro Screenruler Suite
+      - Microsoft Immersive Reader (free, in-built)
+  - "MS Learning Tools/Immersive reader": B21_leatoo
+    datatype: yesno
+    help: |
+        * In-built reading tools - line focus, page tinting, letter spacing and TTS
+  - "Microsoft OneNote (Electronic notes)": B21_oneno
+    datatype: yesno
+  - "Printer/Scanner": B21_prn
+    datatype: yesno
+  - "Select:": B21_prn_type
+    show if: B21_prn
+    choices:
+      - Canon Pixma MG5750 Printer/Scanner
+      - Canon Pixma MX725
+  - "Printing Consumables fund": B21_pcon
+    datatype: yesno
+  - "HEP printing/photocopying fund": B21_phofn
+    datatype: yesno
+  - "Pomodoro Technique": B21_pom
+    datatype: yesno
+  - "Study Skills Support": B21_ss
+    datatype: yesno
+  - "Specialist Mentor Support": B21_sm
+    datatype: yesno
+  - "Support not listed": B21_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B21_plus
+    show if: B21_addit
+    input type: area
+    rows: 4
+    required: False    
+---
+code: |
+  if B21_stt == False:
+    B21_stthd_type = ""
+  else:
+    B21_stthd_type = B21_stthd_type
+  if B21_mm == False:
+    B21_mm_type = ""
+  else:
+    B21_mm_type = B21_mm_type
+  if B21_wbnk == False:
+    B21_wbnk_type = ""
+  else:
+    B21_wbnk_type = B21_wbnk_type
+  if B21_tts == False:
+    B21_tts_type = ""
+  else:
+    B21_tts_type = B21_tts_type
+  if B21_hdst == False:
+    B21_hdst_type = ""
+  else:
+    B21_hdst_type = B21_hdst_type
+---
+mandatory: True
+question: |
+  B-2-2: Writing and Reviewing
+fields:
+  - "Text-to-speech": B22_tts
+    datatype: yesno
+    help: |
+      * ClaroRead Standard - Majority of support required - DOES NOT support convert to PDF
+      * ClaroRead Plus UK Version - as standard, but include convert to PDF
+      * ClaroRead Pro - majority of functionality required including advanced PDF options
+      * ClaroRead SE - limited funtionality (exam use)
+      * All versions (except SE) includeScreenRuler, ClaroCapture, ClaroView, ClaroRead Chrome Extension, ClaroIdeas, Claro AudioNote, Claro Voices, Batch Audio Converter, Save to Video, Speaking Calculator
+      * Mac version (other than SE) includes ScreenRuler, ClaroSpeak, ClaroCapture and ClaroView
+      * TextHelp Read & Write
+  - "Select:": B22_tts_type
+    show if: B22_tts
+    default: ${ B21_tts_type }    
+    required: False
+    choices:
+      - ClaroRead Standard
+      - ClaroRead Plus UK Version
+      - ClaroRead Pro
+      - ClaroRead SE
+      - TextHelp Read & Write
+  - "Speech-to-text": B22_stt
+    datatype: yesno
+    help: |
+        * Currently if chosing 'No Bundled headset' option, you will need to remove this as a type in the report
+  - "Select:": B22_stthd_type
+    show if: B22_stt
+    required: False
+    default: ${ B21_stthd_type }
+    choices:
+      - Dragon with Andrea NC181: Andrea NC181
+      - Dragon with Plantronics DSP 400: Plantronics DSP 400
+      - Dragon with Wireless Headset: Dragon approved wireless headset
+      - Dragon without bundled headset: No bundled headset
+  - "Headset (if not STT bundle)": B22_hdst
+    datatype: yesno
+    help: |
+        * NC = Noise cancelling
+        * ANR = Active Noise Reduction - better for audio sensitivity
+        * Monaural = one ear
+        * Binaural = both ears
+  - "Select:": B22_hdst_type
+    show if: B22_hdst
+    default: ${ B21_hdst_type }  
+    required: False
+    choices:
+      - Andrea NC181 USB Monaural
+      - Andrea NC185 USB Binaural
+      - Andrea WNC-2100 Wireless NC Monaural
+      - Andrea WNC-2500 Wireless NC Binaural
+      - Plantronics DSP400 USB Binaural foldable
+      - ANR-950 - Wireless ANR Binaural
+  - "Mind mapping": B22_mm
+    datatype: yesno
+  - "Select:": B22_mm_type
+    show if: B22_mm
+    required: False
+    default: ${ B21_mm_type }
+    choices:
+      - MindView AT Suite
+      - Inspiration
+      - Mindjet MindManager
+      - MindGenius
+  - "Spellcheck add-on": B22_wbnk
+    datatype: yesno
+    help: |
+        * Medincle
+        * Spellementary
+        * Spellex
+  - "Medincle": B22_medinc
+    datatype: yesno
+    default: ${ B21_wbnk_type }
+    show if: B22_wbnk
+    help: |
+        * Medincle Spellchecker - dictionary add-in
+        * Medincle Plus - dictation and dictionary add-in
+        * Medincle AT Complete - add in for dictionary, dictation and word prediction
+  - "Select:": B22_wbnk_type
+    show if: B22_medinc
+    required: False
+    default: ${ B21_wbnk_type }
+    choices:
+      - Medincle Spellchecker
+      - Medincle Plus
+      - Medincle AT complete - Eco edition
+      - Medincle AT complete - Medical edition
+      - Medincle AT complete - Legal edition (medical and legal)
+  - "Spellex": B22_spellex
+    datatype: yesno
+    show if: B22_wbnk
+    help: |
+        * Spellex varied options - Gold appears to be only dictation version
+  - "Select:": B22_wbnk_type
+    show if: B22_spellex
+    required: False
+    default: ${ B21_wbnk_type }
+    choices:
+      - Spellex Dictation Gold - BioScientific
+      - Spellex Dictation Gold - Comprehensive English
+      - Spellex Dictation Gold - Geographical
+      - Spellex Dictation Gold - Legal
+      - Spellex Dictation Gold - Medical
+      - Spellex Dictation Gold - Veterinary
+      - Spellex Dictation BioScientific
+      - Spellex Dictation Legal
+      - Spellex Dictation Medical
+      - Spellex Dictation Veterinary
+      - Spellex BioScientific for Office
+      - Spellex Dental for Office
+      - Spellex Geographical for Office
+      - Spellex Veterinary for Office
+      - Spellex -OTHER- 
+  - "Spellementary": B22_spelle
+    datatype: yesno
+    show if: B22_wbnk
+    help: |
+        * Spellementary Elite - All features (currently only listing on AT Quote)
+        * Spellementary Standard - word searching, pronunciation, definitions and customisable dictionaries
+        * Spellementary Medical/Legal - as above, plus enhanced dictionary for the relevant subject
+        * Spellementary Medical/Legal Advanced - as above, plus exportable terms to MS Word spellchecker
+        * Spellementary Medical/Legal Professional - as above, plus export terms to voice recognition software    
+  - "Select:": B22_wbnk_type
+    show if: B22_spelle
+    default: ${ B21_wbnk_type }
+    required: False
+    choices:
+      - Spellementary Elite
+      - Spellementary Standard
+      - Spellementary Medical/Legal
+      - Spellementary Medical/Legal Advanced
+      - Spellementary Medical/Legal Professional
+  - "Global AutoCorrect": B22_gac
+    datatype: yesno
+  - "Grammar Support": B22_gram
+    datatype: yesno
+    help: |
+      * Grammarly Premium includes features such as consistency and readability as well as a plagiarism checker
+      * Ginger is freemium software. The free version provides a weekly limit to corrections that, once reached, stops the autocrrection feature, but still displays the correction so it can be typed manually
+  - "Select:": B22_gram_type
+    show if: B22_gram
+    required: False
+    choices:
+      - Grammarly (free)
+      - Grammarly Premium
+      - Ginger (free)
+      - Ginger Premium
+  - "Microsoft 'Read Aloud' - proofing (free)": B22_immre
+    datatype: yesno
+  - "Touch typing tutorial": B22_tytut
+    datatype: yesno
+  - "Select:": B22_tytut_type
+    show if: B22_tytut
+    required: False
+    choices:
+      - Azabat Advanced Typing Tutor
+      - Azabat Collection (Beginner & Advanced)
+      - Ten Thumbs Typing Tutor
+  - "Website/Phone blocking": B22_blok
+    datatype: yesno
+  - "Pomodoro Technique": B22_pom
+    datatype: yesno
+  - "Manchester Phrasebank": B22_manc
+    datatype: yesno
+  - "Referencing Software": B22_ref
+    datatype: yesno
+  - "Select:": B22_ref_type
+    show if: B22_ref
+    required: False
+    choices:
+      - Zotero (free)
+      - Mendeley (free)
+  - "Study Skills Support": B22_ss
+    datatype: yesno
+  - "Specialist Mentor Support": B22_sm
+    datatype: yesno
+  - "Support not listed": B22_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B22_plus
+    show if: B22_addit
+    input type: area
+    rows: 4
+    required: False
+---
+mandatory: True
+question: |
+  B-2-3: Note taking in lectures and seminars
+fields:
+  - "DVR/Dictaphone": B23_dvr
+    datatype: yesno
+  - "Select:": B23_dvr_type
+    show if: B23_dvr
+    required: False
+    choices:
+      - Olympus DM770 (includes Olympus Sonority software)
+      - Olympus DM770 Recorder and Olympus ME34 Microphone (includes Olympus Sonority software)
+      - Philips DVT6010 DVR
+  - "Note Taking Software": B23_ntk
+    datatype: yesno
+  - "Select:": B23_ntk_type
+    show if: B23_ntk
+    required: False
+    choices:
+      - NTEhub
+      - Sonocent Audio Notetaker
+      - Glean by Sonocent
+  - "Microphone/Recording Hardware": B23_mic
+    datatype: yesno
+  - "Select:": B23_mic_type
+    show if: B23_mic
+    required: False
+    choices:
+      - NTEhub (bundle): Conversor MM1 microphone, Adapter cable, Portable Powerbank, USB sound card (included with NTEhub)
+      - Sonocent (bundle): Andrea SG110M Shotgun Microphone, Portable Powerbank (included with Sonocent Audio Notetaker)
+      - Samson Go Mic: Samson Go Mic
+      - Conversor MM1 microphone: Conversor MM1 microphone
+      - Andrea SG110M Shotgun Microphone: Andrea SG110M Shotgun Microphone
+  - "USB Soundcard": B23_inc_sndcd
+    datatype: yesno
+    help: |
+        * Required to connect 3.5mm mic cable (eg. Comversor MM1, Andrea SG110M) to USB for use with laptop
+        * Included with NTEhub bundle
+        * NOT included with Sonocent bundle
+  - "Study Skills Support": B23_ss
+    datatype: yesno
+  - "Specialist Mentor Support": B23_sm
+    datatype: yesno
+  - "Support not listed": B23_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B23_plus
+    show if: B23_addit
+    input type: area
+    rows: 4
+    required: False   
+---
+code: |
+  if B21_mm == True:
+    def_mm_type = B21_mm_type
+  elif B22_mm == True:
+    def_mm_type = B22_mm_type
+  else:
+    def_mm_type = ""
+---
+mandatory: True
+question: |
+  B-2-4: Managing time and organising work
+fields:
+  - "Personal email/calendar": B24_pim
+    datatype: yesno
+  - "OneNote Electronic Notebook": B24_oneno
+    datatype: yesno
+  - "Mind mapping": B24_mm
+    datatype: yesno
+    help: |
+      * Listed options are known to have GANTT chart/timeline functionality
+  - "Select:": B24_mm_type
+    show if: B24_mm
+    required: False
+    default: ${ def_mm_type }
+    choices:
+      - MindGenius
+      - MindView AT Suite
+  - "Note taking app": B24_notes
+    datatype: yesno
+    help: |
+      * Google Keep (free) - More post-it note style, lists can be shared
+      * Evernote (free)
+  - "Select:": B24_notes_type
+    show if: B24_notes
+    required: False
+    choices:
+      - Google Keep (free)
+      - Evernote (free)
+  - "To-do app/software": B24_todo
+    datatype: yesno
+    help: |
+      * Microsoft To-Do (free) - keep multiple lists, assign items to daily tasks. Integrates with Outlook to list flagged emails and deadlines
+      * Todoist (free)
+      * Google Keep (free) - Tickbox list that can be shared with others
+  - "Select:": B24_todo_type
+    show if: B24_todo
+    required: False
+    choices:
+      - Global Tasks
+      - Google Keep (free)
+      - Microsoft To-do (free)
+      - Todoist (free)
+  - "Wallplanner": B24_walp
+    datatype: yesno
+    help: |
+      * Physical wallplanner
+  - "Consider deadline extensions": B24_ded
+    datatype: yesno
+  - "Study Skills Support": B24_ss
+    datatype: yesno
+  - "Specialist Mentor Support": B24_sm
+    datatype: yesno
+  - "Support not listed": B24_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B24_plus
+    show if: B24_addit
+    input type: area
+    rows: 4
+    required: False   
+---
+mandatory: True
+question: |
+  B-2-5: Access to and use of technology
+fields:
+  - "Laptop": B25_lap
+    datatype: yesno
+    help: |
+      * WKH = Standard DSA laptop
+      * WCR = Lightweight laptop
+      * UWCR = Ultra lightweight laptop
+      * VI = High-spec VI laptop
+  - "Select:": B25_lap_type
+    show if: B25_lap
+    required: False
+    choices:
+      - Standard Windows Laptop: WKH Notebook
+      - Lightweight Laptop: WCR Notebook
+      - Ultra Lightweight Laptop: UWCR Notebook
+      - VI Laptop: VI Notebook
+  - "Select:": B25_lap_bag
+    show if: B25_lap
+    required: False
+    choices:
+      - Slipcase
+      - Rucksack
+      - Briefcase
+  - "Desktop": B25_dsk
+    datatype: yesno
+    help: |
+      * WKH = Standard DSA desktop (no monitor)
+      * VI = High-spec VI desktop (no monitor)
+  - "Select": B25_dsk_type
+    show if: B25_dsk
+    required: False
+    choices:
+      - Standard Windows Desktop PC: WKH Desktop
+      - VI Desktop PC: VI Desktop PC
+  - "Select:": B25_mon_type
+    show if: B25_dsk
+    required: False
+    choices:
+      - Standard 19-inch TFT monitor
+      - 22-inch TFT monitor
+      - 24-inch monitor
+      - 27-inch monitor
+  - "AT Training": B25_attra
+    datatype: yesno
+  - "Hours required:": at_hrs
+    show if: B25_attra
+    datatype: integer
+    required: False
+  - "AT Portal": B25_atptl
+    datatype: yesno
+  - "Select:": B25_atptl_type
+    show if: B25_atptl
+    required: False
+    choices:
+      - Aspire Online Learning and Support Platform
+      - iView Learning
+      - Learning Labs
+      - Succeed 2.0 FindMyFlow
+  - "Warranty, Insurance and maintenance": B25_war
+    datatype: yesno
+  - "Support not listed": B25_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B25_plus
+    show if: B25_addit
+    input type: area
+    rows: 4
+    required: False   
+---
+mandatory: True
+question: |
+  B-2-6: Practical sessions, placements, field trips and additional course activities
+fields:
+  - "Presenter Coach": B26_pcoa
+    datatype: yesno
+  - "Portable Spellchecker": B26_prtsp
+    datatype: yesno
+  - "Select:": B26_prtsp_type
+    show if: B26_prtsp
+    required: False
+    choices:
+      - Spellex Pocket Med
+      - Spellex Pocket
+      - Franklin DMQ-570
+  - "Support not listed": B26_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B26_plus
+    show if: B26_addit
+    input type: area
+    rows: 4
+    required: False
+---
+mandatory: True
+question: |
+  B-2-7: Examinations and timed assessments
+fields:
+  - "Discuss extra time": B27_exti
+    datatype: yesno
+  - "Discuss rest breaks": B27_brk
+    datatype: yesno
+  - "Discuss reader": B27_rdr
+    datatype: yesno
+  - "Discuss scribe": B27_scr
+    datatype: yesno
+  - "Discuss use of a PC in exams": B27_pc
+    datatype: yesno
+  - "Study Skills Support": B27_ss
+    datatype: yesno
+  - "Specialist Mentor Support": B27_sm
+    datatype: yesno
+  - "Support not listed": B27_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B27_plus
+    show if: B27_addit
+    input type: area
+    rows: 4
+    required: False
+---
+mandatory: True
+question: |
+  B-2-8: Social interaction and communication
+subquestion: |
+  PLEASE NOTE: The DVR, printer and notetaking software recommendations will need to have been specified earlier as approval for support in this area alone is unlikely.
+fields:
+  - "DVR/Dictaphone": B28_dvr
+    datatype: yesno
+    help: |
+        This will take the model from B-2-3, as specifying for this reason alone is unlikely to be approved.
+  - "Note Taking Software (for rehearsal)": B28_ntk
+    datatype: yesno
+    help: |
+        This will take the recommendation from B-2-3, as specifying for this reason alone is unlikely to be approved.
+  - "Present Pal": B28_ppal
+    datatype: yesno
+  - "Presenter Coach": B28_pcoa
+    datatype: yesno
+  - "Printer (cue cards)": B28_prn
+    datatype: yesno
+    help: |
+        This will take the printer model from B-2-1, as specifying for this reason alone is unlikely to be approved.
+  - "Brain in Hand App (and training)": B28_bih
+    datatype: yesno
+  - "Discuss reduced presentation audience": B28_red
+    datatype: yesno
+  - "Study Skills Support": B28_ss
+    datatype: yesno
+  - "Specialist Mentor Support": B28_sm
+    datatype: yesno
+  - "Support not listed": B28_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B28_plus
+    show if: B28_addit
+    input type: area
+    rows: 4
+    required: False
+---
+mandatory: True
+question: |
+  B-2-9: Travel and access to higher education environment
+fields:
+  - "Taxi transport": B29_tax
+    datatype: yesno
+  - "Support not listed": B29_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B29_plus
+    show if: B29_addit
+    input type: area
+    rows: 4
+    required: False
+---
+mandatory: True
+question: |
+  B-2-10: Additional information (and Other items)
+fields:
+  - "Support not listed": B210_addit
+    datatype: yesno
+    help: |
+        This will list items at the bottom of the recommendations in this section - if you think an item needs to be added please let Adam know.
+  - "Enter support": B210_plus
+    show if: B210_addit
+    input type: area
+    rows: 4
+    required: False
+---
+mandatory: True
+question: |
+  Here is your document.
+attachment:
+  name: NAR Recommendations
+  filename: NAR_Pt2
+  docx template file: GLB_NAR.docx
+  valid formats:
+    - docx
+allow emailing: False
