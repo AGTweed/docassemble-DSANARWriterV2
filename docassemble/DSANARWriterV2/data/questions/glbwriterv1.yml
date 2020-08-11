@@ -38,11 +38,18 @@ fields:
       - SpLD: glo_SpLD
       - Mental Health: glo_MH
       - ASC: glo_ASC
-  - "Course Length (Years)": cor_len
+  - "Course Remaining (Years)": cor_len
     datatype: range
     min: 1
     max: 7
     default: 3
+  - "Student Computer": pc_type
+    input type: dropdown
+    choices:
+      - Windows PC or Laptop: PC
+      - Apple Mac or Macbook: Mac
+      - Chromebook: Chromebook
+      - No PC: No PC 
 ---
 mandatory: True
 question: |
@@ -505,6 +512,8 @@ fields:
     choices:
       - MindGenius
       - MindView AT Suite
+  - "Global Tasks": B24_glota
+    datatype: yesno
   - "Note taking app": B24_notes
     datatype: yesno
     help: |
