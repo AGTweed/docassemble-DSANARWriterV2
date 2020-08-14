@@ -1,7 +1,7 @@
 ---
 metadata:
   title: |
-    DSA Recommendations 
+    DSA Report Writer - All conditions
   short title: |
     DSA Global
   description: |
@@ -9,7 +9,7 @@ metadata:
   authors:
     - name: Adam
       organization: AbiltyNet
-  revision_date: 2020-08-06
+  revision_date: 2020-08-12
   required privileges:
    - admin
    - developer
@@ -102,7 +102,18 @@ fields:
       - Andrea WNC-2100 Wireless NC Monaural
       - Andrea WNC-2500 Wireless NC Binaural
       - Plantronics DSP400 USB Binaural foldable
-      - ANR-950 - Wireless ANR Binaural
+  - "Headphones": B21_hdph
+    datatype: yesno
+    help: |
+        * NC = Noise cancelling
+        * ANR = Active Noise Reduction - better for audio sensitivity
+  - "Select:": B21_hdph_type
+    show if: B21_hdph
+    required: False
+    choices:
+      - Andrea ANR-950 Noise Cancelling Headphones
+      - BOSE QuietComfort 25 Noise Cancelling Headphones
+      - Cowin E7 Wireless Noise Cancelling Headphones
   - "Mind mapping": B21_mm
     datatype: yesno
   - "Select:": B21_mm_type
@@ -115,10 +126,12 @@ fields:
       - MindGenius
   - "Pro Study": B21_prost
     datatype: yesno
+  - "EquatIO": B21_eqio
+    datatype: yesno
   - "Spellcheck add-on": B21_wbnk
     datatype: yesno
     help: |
-        * Medincle
+        * Medincle (Britigh-English spellings)
         * Spellementary
         * Spellex
   - "Medincle": B21_medinc
@@ -195,13 +208,24 @@ fields:
         * In-built reading tools - line focus, page tinting, letter spacing and TTS
   - "Microsoft OneNote (Electronic notes)": B21_oneno
     datatype: yesno
+  - "External monitor": B21_mon
+    datatype: yesno
+  - "Select:": B21_mon_type
+    show if: B21_mon
+    required: False
+    choices:
+      - Standard 19-inch TFT monitor
+      - 22-inch TFT monitor
+      - 24-inch monitor
+      - 27-inch monitor
   - "Printer/Scanner": B21_prn
     datatype: yesno
   - "Select:": B21_prn_type
     show if: B21_prn
     choices:
       - Canon Pixma MG5750 Printer/Scanner
-      - Canon Pixma MX725
+      - Canon Pixma MX725 Printer/Scanner
+      - Canon Pixma iP7250 Printer only: Canon Pixma iP7250
   - "Printing Consumables fund": B21_pcon
     datatype: yesno
   - "HEP printing/photocopying fund": B21_phofn
@@ -310,6 +334,8 @@ fields:
       - Inspiration
       - Mindjet MindManager
       - MindGenius
+  - "EquatIO": B22_eqio
+    datatype: yesno
   - "Spellcheck add-on": B22_wbnk
     datatype: yesno
     help: |
@@ -535,7 +561,6 @@ fields:
     show if: B24_todo
     required: False
     choices:
-      - Global Tasks
       - Google Keep (free)
       - Microsoft To-do (free)
       - Todoist (free)
@@ -585,6 +610,8 @@ fields:
       - Slipcase
       - Rucksack
       - Briefcase
+      - To be decided: (bag to be decided)
+      - No bag required
   - "Desktop": B25_dsk
     datatype: yesno
     help: |
@@ -596,7 +623,7 @@ fields:
     choices:
       - Standard Windows Desktop PC: WKH Desktop
       - VI Desktop PC: VI Desktop PC
-  - "Select:": B25_mon_type
+  - "Select:": B25_pcmon_type
     show if: B25_dsk
     required: False
     choices:
@@ -647,6 +674,8 @@ fields:
       - Spellex Pocket Med
       - Spellex Pocket
       - Franklin DMQ-570
+  - "Specialist Mentor Support": B26_sm
+    datatype: yesno
   - "Support not listed": B26_addit
     datatype: yesno
     help: |
@@ -661,6 +690,8 @@ mandatory: True
 question: |
   B-2-7: Examinations and timed assessments
 fields:
+  - "Discuss separate room": B27_sprm
+    datatype: yesno
   - "Discuss extra time": B27_exti
     datatype: yesno
   - "Discuss rest breaks": B27_brk
