@@ -131,18 +131,17 @@ fields:
   - "Spellcheck add-on": B21_wbnk
     datatype: yesno
     help: |
-        * Medincle (Britigh-English spellings)
-        * Spellementary
-        * Spellex
-  - "Medincle": B21_medinc
-    datatype: yesno
-    show if: B21_wbnk
-    help: |
         * Medincle Spellchecker - dictionary add-in
         * Medincle Plus - dictation and dictionary add-in
         * Medincle AT Complete - add in for dictionary, dictation and word prediction
+        * Spellex varied options - Gold appears to be only dictation version
+        * Spellementary Elite - All features (currently only listing on AT Quote)
+        * Spellementary Standard - word searching, pronunciation, definitions and customisable dictionaries
+        * Spellementary Medical/Legal - as above, plus enhanced dictionary for the relevant subject
+        * Spellementary Medical/Legal Advanced - as above, plus exportable terms to MS Word spellchecker
+        * Spellementary Medical/Legal Professional - as above, plus export terms to voice recognition software   
   - "Select:": B21_wbnk_type
-    show if: B21_medinc
+    show if: B21_wbnk
     required: False
     choices:
       - Medincle Spellchecker
@@ -150,15 +149,6 @@ fields:
       - Medincle AT complete - Eco edition
       - Medincle AT complete - Medical edition
       - Medincle AT complete - Legal edition (medical and legal)
-  - "Spellex": B21_spellex
-    datatype: yesno
-    show if: B21_wbnk
-    help: |
-        * Spellex varied options - Gold appears to be only dictation version
-  - "Select:": B21_wbnk_type
-    show if: B21_spellex
-    required: False
-    choices:
       - Spellex Dictation Gold - BioScientific
       - Spellex Dictation Gold - Comprehensive English
       - Spellex Dictation Gold - Geographical
@@ -174,19 +164,6 @@ fields:
       - Spellex Geographical for Office
       - Spellex Veterinary for Office
       - Spellex -OTHER- 
-  - "Spellementary": B21_spelle
-    datatype: yesno
-    show if: B21_wbnk
-    help: |
-        * Spellementary Elite - All features (currently only listing on AT Quote)
-        * Spellementary Standard - word searching, pronunciation, definitions and customisable dictionaries
-        * Spellementary Medical/Legal - as above, plus enhanced dictionary for the relevant subject
-        * Spellementary Medical/Legal Advanced - as above, plus exportable terms to MS Word spellchecker
-        * Spellementary Medical/Legal Professional - as above, plus export terms to voice recognition software    
-  - "Select:": B21_wbnk_type
-    show if: B21_spelle
-    required: False
-    choices:
       - Spellementary Elite
       - Spellementary Standard
       - Spellementary Medical/Legal
@@ -339,19 +316,17 @@ fields:
   - "Spellcheck add-on": B22_wbnk
     datatype: yesno
     help: |
-        * Medincle
-        * Spellementary
-        * Spellex
-  - "Medincle": B22_medinc
-    datatype: yesno
-    default: ${ B21_wbnk_type }
-    show if: B22_wbnk
-    help: |
         * Medincle Spellchecker - dictionary add-in
         * Medincle Plus - dictation and dictionary add-in
         * Medincle AT Complete - add in for dictionary, dictation and word prediction
+        * Spellex varied options - Gold appears to be only dictation version
+        * Spellementary Elite - All features (currently only listing on AT Quote)
+        * Spellementary Standard - word searching, pronunciation, definitions and customisable dictionaries
+        * Spellementary Medical/Legal - as above, plus enhanced dictionary for the relevant subject
+        * Spellementary Medical/Legal Advanced - as above, plus exportable terms to MS Word spellchecker
+        * Spellementary Medical/Legal Professional - as above, plus export terms to voice recognition software
   - "Select:": B22_wbnk_type
-    show if: B22_medinc
+    show if: B22_wbnk
     required: False
     default: ${ B21_wbnk_type }
     choices:
@@ -360,16 +335,6 @@ fields:
       - Medincle AT complete - Eco edition
       - Medincle AT complete - Medical edition
       - Medincle AT complete - Legal edition (medical and legal)
-  - "Spellex": B22_spellex
-    datatype: yesno
-    show if: B22_wbnk
-    help: |
-        * Spellex varied options - Gold appears to be only dictation version
-  - "Select:": B22_wbnk_type
-    show if: B22_spellex
-    required: False
-    default: ${ B21_wbnk_type }
-    choices:
       - Spellex Dictation Gold - BioScientific
       - Spellex Dictation Gold - Comprehensive English
       - Spellex Dictation Gold - Geographical
@@ -385,20 +350,6 @@ fields:
       - Spellex Geographical for Office
       - Spellex Veterinary for Office
       - Spellex -OTHER- 
-  - "Spellementary": B22_spelle
-    datatype: yesno
-    show if: B22_wbnk
-    help: |
-        * Spellementary Elite - All features (currently only listing on AT Quote)
-        * Spellementary Standard - word searching, pronunciation, definitions and customisable dictionaries
-        * Spellementary Medical/Legal - as above, plus enhanced dictionary for the relevant subject
-        * Spellementary Medical/Legal Advanced - as above, plus exportable terms to MS Word spellchecker
-        * Spellementary Medical/Legal Professional - as above, plus export terms to voice recognition software    
-  - "Select:": B22_wbnk_type
-    show if: B22_spelle
-    default: ${ B21_wbnk_type }
-    required: False
-    choices:
       - Spellementary Elite
       - Spellementary Standard
       - Spellementary Medical/Legal
