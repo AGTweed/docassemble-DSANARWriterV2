@@ -78,15 +78,21 @@ fields:
     datatype: yesno
     help: |
         * Currently if chosing 'No Bundled headset' option, you will need to remove this as a type in the report
-  - "Select:": B21_stthd_type
+  - "Select:": B21_stt_type
     show if: B21_stt
     required: False
     choices:
-      - Dragon with Andrea NC181: Andrea NC181
-      - Dragon with Plantronics DSP 400: Plantronics DSP 400
-      - Dragon with Wireless Headset: Dragon approved wireless headset
-      - Dragon without bundled headset: No bundled headset
-  - "Headset (if not STT bundle)": B21_hdst
+      - Dragon Professional Individual
+      - TalkType Education for Mac      
+#  - "Select:": B21_stthd_type
+#    show if: B21_stt
+#    required: False
+#    choices:
+#      - Dragon with Andrea NC181: Andrea NC181
+#      - Dragon with Plantronics DSP 400: Plantronics DSP 400
+#      - Dragon with Wireless Headset: Dragon approved wireless headset
+#      - Dragon without bundled headset: No bundled headset
+  - "Headset": B21_hdst
     datatype: yesno
     help: |
         * NC = Noise cancelling
@@ -97,11 +103,14 @@ fields:
     show if: B21_hdst
     required: False
     choices:
-      - Andrea NC181 USB Monaural
-      - Andrea NC185 USB Binaural
-      - Andrea WNC-2100 Wireless NC Monaural
-      - Andrea WNC-2500 Wireless NC Binaural
-      - Plantronics DSP400 USB Binaural foldable
+      - Andrea NC181 USB Monaural: Andrea NC181 USB headset
+      - Andrea NC185 USB Binaural: Andrea NC185 USB headset
+      - Andrea WNC-2100 Wireless NC Monaural: Andrea WNC-2100 wireless headset
+      - Andrea WNC-2500 Wireless NC Binaural: Andrea WNC-2500 wireless headset
+      - Plantronics DSP400 USB Binaural foldable: Plantronics DSP400 USB headset
+      - Dragon bundled Wireless Headset: Dragon approved wireless headset
+      - Dragon bundled Andrea NC181: Andrea NC181 USB headset
+      - Dragon bundled Plantronics DSP400: Plantronics DSP400 USB headset
   - "Headphones": B21_hdph
     datatype: yesno
     help: |
@@ -225,9 +234,9 @@ fields:
 ---
 code: |
   if B21_stt == False:
-    B21_stthd_type = ""
+    B21_stt_type = ""
   else:
-    B21_stthd_type = B21_stthd_type
+    B21_stt_type = B21_stt_type
   if B21_mm == False:
     B21_mm_type = ""
   else:
@@ -244,6 +253,10 @@ code: |
     B21_hdst_type = ""
   else:
     B21_hdst_type = B21_hdst_type
+#  if B21_stt == False:
+#    B21_stthd_type = ""
+#  else:
+#    B21_stthd_type = B21_stthd_type
 ---
 mandatory: True
 question: |
@@ -273,16 +286,23 @@ fields:
     datatype: yesno
     help: |
         * Currently if chosing 'No Bundled headset' option, you will need to remove this as a type in the report
-  - "Select:": B22_stthd_type
+  - "Select": B22_stt_type
     show if: B22_stt
     required: False
-    default: ${ B21_stthd_type }
+    default: ${ B21_stt_type }
     choices:
-      - Dragon with Andrea NC181: Andrea NC181
-      - Dragon with Plantronics DSP 400: Plantronics DSP 400
-      - Dragon with Wireless Headset: Dragon approved wireless headset
-      - Dragon without bundled headset: No bundled headset
-  - "Headset (if not STT bundle)": B22_hdst
+      - Dragon Professional Individual
+      - TalkType Education for Mac    
+#  - "Select:": B22_stthd_type
+#    show if: B22_stt
+#    required: False
+#    default: ${ B21_stthd_type }
+#    choices:
+#      - Dragon with Andrea NC181: Andrea NC181
+#      - Dragon with Plantronics DSP 400: Plantronics DSP 400
+#      - Dragon with Wireless Headset: Dragon approved wireless headset
+#      - Dragon without bundled headset: No bundled headset
+  - "Headset": B22_hdst
     datatype: yesno
     help: |
         * NC = Noise cancelling
@@ -294,12 +314,14 @@ fields:
     default: ${ B21_hdst_type }  
     required: False
     choices:
-      - Andrea NC181 USB Monaural
-      - Andrea NC185 USB Binaural
-      - Andrea WNC-2100 Wireless NC Monaural
-      - Andrea WNC-2500 Wireless NC Binaural
-      - Plantronics DSP400 USB Binaural foldable
-      - ANR-950 - Wireless ANR Binaural
+      - Andrea NC181 USB Monaural: Andrea NC181 USB headset
+      - Andrea NC185 USB Binaural: Andrea NC185 USB headset
+      - Andrea WNC-2100 Wireless NC Monaural: Andrea WNC-2100 wireless headset
+      - Andrea WNC-2500 Wireless NC Binaural: Andrea WNC-2500 wireless headset
+      - Plantronics DSP400 USB Binaural foldable: Plantronics DSP400 USB headset
+      - Dragon bundled Wireless Headset: Dragon approved wireless headset
+      - Dragon bundled Andrea NC181: Andrea NC181 USB headset
+      - Dragon bundled Plantronics DSP400: Plantronics DSP400 USB headset
   - "Mind mapping": B22_mm
     datatype: yesno
   - "Select:": B22_mm_type
@@ -561,7 +583,7 @@ fields:
       - Slipcase
       - Rucksack
       - Briefcase
-      - To be decided: (bag to be decided)
+      - To be decided: type TBD
       - No bag required
   - "Desktop": B25_dsk
     datatype: yesno
