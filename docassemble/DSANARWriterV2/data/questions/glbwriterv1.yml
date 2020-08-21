@@ -109,8 +109,8 @@ fields:
       - Andrea WNC-2500 Wireless NC Binaural: Andrea WNC-2500 wireless headset
       - Plantronics DSP400 USB Binaural foldable: Plantronics DSP400 USB headset
       - Dragon bundled Wireless Headset: Dragon approved wireless headset
-      - Dragon bundled Andrea NC181: Andrea NC181 USB headset
-      - Dragon bundled Plantronics DSP400: Plantronics DSP400 USB headset
+      - Dragon bundled Andrea NC181: Andrea NC181 USB headset for Dragon
+      - Dragon bundled Plantronics DSP400: Plantronics DSP400 USB headset for Dragon
   - "Headphones": B21_hdph
     datatype: yesno
     help: |
@@ -320,8 +320,8 @@ fields:
       - Andrea WNC-2500 Wireless NC Binaural: Andrea WNC-2500 wireless headset
       - Plantronics DSP400 USB Binaural foldable: Plantronics DSP400 USB headset
       - Dragon bundled Wireless Headset: Dragon approved wireless headset
-      - Dragon bundled Andrea NC181: Andrea NC181 USB headset
-      - Dragon bundled Plantronics DSP400: Plantronics DSP400 USB headset
+      - Dragon bundled Andrea NC181: Andrea NC181 USB headset for Dragon
+      - Dragon bundled Plantronics DSP400: Plantronics DSP400 USB headset for Dragon
   - "Mind mapping": B22_mm
     datatype: yesno
   - "Select:": B22_mm_type
