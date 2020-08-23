@@ -216,8 +216,6 @@ fields:
     datatype: yesno
   - "HEP printing/photocopying fund": B21_phofn
     datatype: yesno
-  - "Pomodoro Technique": B21_pom
-    datatype: yesno
   - "Study Skills Support": B21_ss
     datatype: yesno
   - "Specialist Mentor Support": B21_sm
@@ -403,12 +401,6 @@ fields:
       - Azabat Advanced Typing Tutor
       - Azabat Collection (Beginner & Advanced)
       - Ten Thumbs Typing Tutor
-  - "Website/Phone blocking": B22_blok
-    datatype: yesno
-  - "Pomodoro Technique": B22_pom
-    datatype: yesno
-  - "Manchester Phrasebank": B22_manc
-    datatype: yesno
   - "Referencing Software": B22_ref
     datatype: yesno
   - "Select:": B22_ref_type
@@ -758,6 +750,19 @@ fields:
     input type: area
     rows: 4
     required: False
+---
+mandatory: True
+question: |
+  Other Support (Section D3)
+fields:
+  - "Pomodoro Technique": D3_pom
+    datatype: yesno
+  - "Manchester University Phrasebank": D3_manc
+    datatype: yesno
+  - "Cold Turkey (Web blocking)": D3_web_coltr
+    datatype: yesno    
+  - "Forest App (Phone blocking)": D3_app_forst
+    datatype: yesno
 ---
 mandatory: True
 question: |
