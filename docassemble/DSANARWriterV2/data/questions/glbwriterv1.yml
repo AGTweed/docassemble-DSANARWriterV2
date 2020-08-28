@@ -23,7 +23,7 @@ code: |
 ---
 event: kick_out_user
 question: |
-  I am sorry, but you need to log in if you want to use this.
+  You need to log in as an assessor if you want to use this.
 buttons:
   - Log in: signin
   - Exit: exit
@@ -31,6 +31,8 @@ buttons:
 mandatory: True
 question: |
   General details
+subquestion: |
+  Assessor: ${ user_info().first_name }
 fields:
   - "Condition": gbl_cond
     input type: dropdown
@@ -462,6 +464,19 @@ fields:
         * Required to connect 3.5mm mic cable (eg. Comversor MM1, Andrea SG110M) to USB for use with laptop
         * Included with NTEhub bundle
         * NOT included with Sonocent bundle
+  - "Note taking app": B23_notes
+    datatype: yesno
+    help: |
+      * Google Keep (free) - More post-it note style, lists can be shared
+      * Evernote (free)
+  - "Select:": B23_notes_type
+    show if: B23_notes
+    required: False
+    choices:
+      - Google Keep (free)
+      - Evernote (free)
+  - "Transcription feature in word": B23_trans
+    datatype: yesno
   - "Study Skills Support": B23_ss
     datatype: yesno
   - "Specialist Mentor Support": B23_sm
@@ -483,6 +498,10 @@ code: |
     def_mm_type = B22_mm_type
   else:
     def_mm_type = ""
+  if B23_notes == True:
+    def_notes_type = B23_notes_type
+  else:
+    def_notes_type = ""
 ---
 mandatory: True
 question: |
@@ -513,6 +532,7 @@ fields:
   - "Select:": B24_notes_type
     show if: B24_notes
     required: False
+    default: ${ def_notes_type }
     choices:
       - Google Keep (free)
       - Evernote (free)
@@ -755,6 +775,18 @@ mandatory: True
 question: |
   Other Support (Section D3)
 fields:
+  - "Microsoft Office 365": D3_O365
+    datatype: yesno
+  - "Transcription feature in word": D3_trans
+    datatype: yesno
+  - "Referencing Software": D3_ref
+    datatype: yesno
+  - "Select:": D3_ref_type
+    show if: D3_ref
+    required: False
+    choices:
+      - Zotero (free): Zotero
+      - Mendeley (free): Mendeley
   - "Pomodoro Technique": D3_pom
     datatype: yesno
   - "Manchester University Phrasebank": D3_manc
@@ -762,6 +794,8 @@ fields:
   - "Cold Turkey (Web blocking)": D3_web_coltr
     datatype: yesno    
   - "Forest App (Phone blocking)": D3_app_forst
+    datatype: yesno
+  - "Mindshift (MH App)": D3_app_mdshf
     datatype: yesno
 ---
 mandatory: True
