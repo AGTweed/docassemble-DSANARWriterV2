@@ -67,6 +67,8 @@ fields:
       * All versions (except SE) includeScreenRuler, ClaroCapture, ClaroView, ClaroRead Chrome Extension, ClaroIdeas, Claro AudioNote, Claro Voices, Batch Audio Converter, Save to Video, Speaking Calculator
       * Mac version (other than SE) includes ScreenRuler, ClaroSpeak, ClaroCapture and ClaroView
       * TextHelp Read & Write
+      * WordQ - Word prediction - Reported as being less demanding on computer resources
+      * WordQ & SpeakQ - As above, SpeakQ adds TTS and STT for word searching 
   - "Select": B21_tts_type
     show if: B21_tts
     required: False
@@ -76,6 +78,8 @@ fields:
       - ClaroRead Pro
       - ClaroRead SE
       - TextHelp Read & Write
+      - WordQ
+      - WordQ & SpeakQ
   - "Speech-to-text": B21_stt
     datatype: yesno
     help: |
@@ -206,6 +210,8 @@ fields:
       - 22-inch TFT monitor
       - 24-inch monitor
       - 27-inch monitor
+  - "SuperReading (online reading course)": B21_suprdg
+    datatype: yesno
   - "Printer/Scanner": B21_prn
     datatype: yesno
   - "Select:": B21_prn_type
@@ -214,6 +220,8 @@ fields:
       - Canon Pixma MG5750 Printer/Scanner
       - Canon Pixma MX725 Printer/Scanner
       - Canon Pixma iP7250 Printer only: Canon Pixma iP7250
+  - "Ream of paper": B21_rmop 
+    datatype: yesno
   - "Printing Consumables fund": B21_pcon
     datatype: yesno
   - "HEP printing/photocopying fund": B21_phofn
@@ -272,6 +280,8 @@ fields:
       * All versions (except SE) includeScreenRuler, ClaroCapture, ClaroView, ClaroRead Chrome Extension, ClaroIdeas, Claro AudioNote, Claro Voices, Batch Audio Converter, Save to Video, Speaking Calculator
       * Mac version (other than SE) includes ScreenRuler, ClaroSpeak, ClaroCapture and ClaroView
       * TextHelp Read & Write
+      * WordQ - Word prediction - Reported as being less demanding on computer resources
+      * WordQ & SpeakQ - As above, SpeakQ adds TTS and STT for word searching       
   - "Select:": B22_tts_type
     show if: B22_tts
     default: ${ B21_tts_type }    
@@ -282,6 +292,8 @@ fields:
       - ClaroRead Pro
       - ClaroRead SE
       - TextHelp Read & Write
+      - WordQ
+      - WordQ & SpeakQ      
   - "Speech-to-text": B22_stt
     datatype: yesno
     help: |
@@ -498,10 +510,10 @@ code: |
     def_mm_type = B22_mm_type
   else:
     def_mm_type = ""
-  if B23_notes == True:
-    def_notes_type = B23_notes_type
-  else:
+  if B23_notes == False:
     def_notes_type = ""
+  else:
+    def_notes_type = B23_notes_type
 ---
 mandatory: True
 question: |
@@ -791,6 +803,8 @@ fields:
     datatype: yesno
   - "Manchester University Phrasebank": D3_manc
     datatype: yesno
+  - "Include link to NHS Apps Library": D3_web_nhs
+    datatype: yesno  
   - "Cold Turkey (Web blocking)": D3_web_coltr
     datatype: yesno    
   - "Forest App (Phone blocking)": D3_app_forst
