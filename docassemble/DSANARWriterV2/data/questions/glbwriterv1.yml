@@ -128,7 +128,7 @@ fields:
     choices:
       - Andrea ANR-950 Noise Cancelling Headphones
       - BOSE QuietComfort 25 Noise Cancelling Headphones
-      - Cowin E7 Wireless Noise Cancelling Headphones
+      - Cowin E7 wireless Noise Cancelling Headphones
   - "Mind mapping": B21_mm
     datatype: yesno
   - "Select:": B21_mm_type
