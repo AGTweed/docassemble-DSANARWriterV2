@@ -43,7 +43,7 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.DSANARWriterV2',
-      version='0.2.8',
+      version='0.2.12',
       description=('Automated writer for DSA reports'),
       long_description='Needs Assessment report writer for all DSA conditions ',
       long_description_content_type='text/markdown',
