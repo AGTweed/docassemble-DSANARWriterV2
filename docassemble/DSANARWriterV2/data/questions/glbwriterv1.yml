@@ -1,15 +1,18 @@
 ---
+features:
+  css: custom-css-bootstrap.css
+---
 metadata:
   title: |
     DSA Report Writer - All conditions
   short title: |
     DSA Global
   description: |
-    DSA Global Recommendations generator (BETA)
+    DSA Global Recommendations generator
   authors:
     - name: Adam
       organization: AbiltyNet
-  revision_date: 2020-10-23
+  revision_date: 2021-06-08
   required privileges:
    - admin
    - developer
@@ -817,7 +820,7 @@ question: |
   Here is your document.
 attachment:
   name: NAR Recommendations
-  filename: NAR_Pt2
+  filename: AbilityNet NAR
   docx template file: GLB_NAR.docx
   valid formats:
     - docx
