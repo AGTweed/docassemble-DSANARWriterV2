@@ -142,7 +142,7 @@ fields:
       - Inspiration
       - Mindjet MindManager
       - MindGenius
-  - "Pro Study": B21_prost
+  - "ProStudy": B21_prost
     datatype: yesno
   - "EquatIO": B21_eqio
     datatype: yesno
@@ -196,7 +196,7 @@ fields:
     required: False
     choices:
       - Claro Screenruler Suite
-      - Microsoft Immersive Reader (free, in-built)
+      - Microsoft Immersive Reader (free)
   - "MS Learning Tools/Immersive reader": B21_leatoo
     datatype: yesno
     help: |
@@ -220,6 +220,7 @@ fields:
   - "Select:": B21_prn_type
     show if: B21_prn
     choices:
+      - DSA Multifunction Printer/Scanner
       - Canon Pixma MG5750 Printer/Scanner
       - Canon Pixma MX725 Printer/Scanner
       - Canon Pixma iP7250 Printer only: Canon Pixma iP7250
@@ -461,7 +462,7 @@ fields:
     choices:
       - NTEhub
       - Sonocent Audio Notetaker
-      - Glean by Sonocent
+      - Glean
   - "Microphone/Recording Hardware": B23_mic
     datatype: yesno
   - "Select:": B23_mic_type
@@ -610,7 +611,7 @@ fields:
       - Slipcase
       - Rucksack
       - Briefcase
-      - To be decided: type TBD
+      - To be decided: carry case
       - No bag required
   - "Desktop": B25_dsk
     datatype: yesno
