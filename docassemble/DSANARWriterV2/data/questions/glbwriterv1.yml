@@ -470,7 +470,7 @@ fields:
     required: False
     choices:
       - NTEhub (bundle): Conversor MM1 microphone, Adapter cable, Portable Powerbank, USB sound card (included with NTEhub)
-      - Sonocent (bundle): Andrea SG110M Shotgun Microphone, Portable Powerbank (included with Sonocent Audio Notetaker)
+      - Sonocent (bundle): Andrea SG110M Shotgun Microphone, Portable Powerbank (included with Glean)
       - Samson Go Mic: Samson Go Mic
       - Conversor MM1 microphone: Conversor MM1 microphone
       - Andrea SG110M Shotgun Microphone: Andrea SG110M Shotgun Microphone
@@ -479,7 +479,7 @@ fields:
     help: |
         * Required to connect 3.5mm mic cable (eg. Comversor MM1, Andrea SG110M) to USB for use with laptop
         * Included with NTEhub bundle
-        * NOT included with Sonocent bundle
+        * NOT included with Glean bundle
   - "Note taking app": B23_notes
     datatype: yesno
     help: |
